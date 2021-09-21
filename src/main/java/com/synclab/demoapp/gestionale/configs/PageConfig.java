@@ -6,6 +6,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
+
 @Configuration
 public class PageConfig implements WebMvcConfigurer {
 
@@ -13,6 +15,11 @@ public class PageConfig implements WebMvcConfigurer {
 	public BCryptPasswordEncoder passwordEncoder() {
 	    BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 	    return bCryptPasswordEncoder;
+	}
+	
+	@Bean
+	public LayoutDialect layoutDialect() {
+	    return new LayoutDialect();
 	}
 	
 	@Override

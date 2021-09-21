@@ -1,5 +1,9 @@
 package com.synclab.demoapp.gestionale.controller;
 
+
+import com.synclab.demoapp.gestionale.model.User;
+import com.synclab.demoapp.gestionale.service.CustomUserDetailsService;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.synclab.demoapp.gestionale.model.User;
-import com.synclab.demoapp.gestionale.service.CustomUserDetailsService;
+
 
 @Controller
 public class LoginController {
@@ -62,7 +65,7 @@ public class LoginController {
 	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    User user = userService.findUserByEmail(auth.getName());
 	    modelAndView.addObject("currentUser", user);
-	    modelAndView.addObject("fullName", "Welcome " + user.getNome());
+	    modelAndView.addObject("Nome", "Welcome " + user.getNome());
 	    modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
 	    modelAndView.setViewName("dashboard");
 	    return modelAndView;

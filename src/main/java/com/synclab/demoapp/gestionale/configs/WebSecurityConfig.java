@@ -14,6 +14,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.synclab.demoapp.gestionale.service.CustomUserDetailsService;
 
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -53,5 +54,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
 	}
 	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	    UserDetailsService userDetailsService = mongoUserDetails();
+	    auth
+	        .userDetailsService(userDetailsService)
+	        .passwordEncoder(bCryptPasswordEncoder);
+
+	}
 	
 }
