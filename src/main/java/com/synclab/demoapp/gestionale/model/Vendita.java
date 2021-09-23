@@ -1,5 +1,6 @@
 package com.synclab.demoapp.gestionale.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
@@ -21,11 +22,11 @@ public class Vendita {
 	@Indexed(unique = true, direction = IndexDirection.ASCENDING)
 	private Date dataVendita;
 	
-	private int quantitaVenduta;
+	private Integer quantitaVenduta;
 	
-	private float prezzoTotVendita;
+	private BigDecimal prezzoTotVendita;
 	
-	private float prezzoTotAcquisto;
+	private BigDecimal prezzoTotAcquisto;
 	
 	@DBRef
 	private User user;

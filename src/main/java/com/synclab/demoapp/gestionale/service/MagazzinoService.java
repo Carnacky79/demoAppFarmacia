@@ -1,5 +1,6 @@
 package com.synclab.demoapp.gestionale.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class MagazzinoService {
 		magazzinoRepository.save(mag);
 	}
 	
-	public void updateMagazzino(String codiceProdotto, String nomeProdotto, int disponibilita, String posizione, float prezzoVendita, float prezzoAcquisto) {
+	public void updateMagazzino(String codiceProdotto, String nomeProdotto, Integer disponibilita, String posizione, BigDecimal prezzoVendita, BigDecimal prezzoAcquisto) {
 		Magazzino mag = magazzinoRepository.findByCodiceProdotto(codiceProdotto);
 		Posizioni pos = posizioniRepository.findByNomePosizione(posizione);
 		mag.setNomeProdotto(nomeProdotto);

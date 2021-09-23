@@ -1,5 +1,7 @@
 package com.synclab.demoapp.gestionale.model;
 
+import java.math.BigDecimal;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -21,11 +23,11 @@ public class Magazzino {
 	@Indexed(unique = true, direction = IndexDirection.DESCENDING)
 	private String nomeProdotto;
 	
-	private int disponibilita;
+	private Integer disponibilita;
 	
-	private float prezzoAcquisto;
+	private BigDecimal prezzoAcquisto;
 	
-	private float prezzoVendita;
+	private BigDecimal prezzoVendita;
 	
 	@DBRef
 	private Posizioni posizione;
