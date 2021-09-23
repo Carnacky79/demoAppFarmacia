@@ -5,12 +5,10 @@ import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.synclab.demoapp.gestionale.model.Magazzino;
+import com.synclab.demoapp.gestionale.model.Prodotti;
 
 public interface MagazzinoRepository extends MongoRepository<Magazzino, String>{
-	
-	Magazzino findByCodiceProdotto(String codiceProdotto);
-	
-	Magazzino findByNomeProdotto(String nomeProdotto);
+	public Magazzino findByProdotto(Prodotti prodotto);
 	
 	List<Magazzino> findByPosizione(String posizione);
 	

@@ -17,7 +17,7 @@ import lombok.Data;
 public class Vendita {
 	
 	@Id
-	private String id;
+	private Integer  id;
 	
 	@Indexed(unique = true, direction = IndexDirection.ASCENDING)
 	private Date dataVendita;
@@ -32,6 +32,6 @@ public class Vendita {
 	private User user;
 	
 	@DBRef
-	private Magazzino prodotto;	
+	private Prodotti  prodotto;	
 	
 }

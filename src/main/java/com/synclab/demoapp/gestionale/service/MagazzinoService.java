@@ -1,6 +1,5 @@
 package com.synclab.demoapp.gestionale.service;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.synclab.demoapp.gestionale.model.Magazzino;
 import com.synclab.demoapp.gestionale.model.Posizioni;
+import com.synclab.demoapp.gestionale.model.Prodotti;
 import com.synclab.demoapp.gestionale.repository.MagazzinoRepository;
 import com.synclab.demoapp.gestionale.repository.PosizioniRepository;
 
@@ -19,13 +19,9 @@ public class MagazzinoService {
 	
 	@Autowired
 	private PosizioniRepository posizioniRepository;
-	
-	public Magazzino findByCodiceProdotto(String codiceProdotto) {
-		return magazzinoRepository.findByCodiceProdotto(codiceProdotto);
-	}
-	
-	public Magazzino findByNomeProdotto(String nomeProdotto) {
-		return magazzinoRepository.findByNomeProdotto(nomeProdotto);
+
+	public Magazzino findByProdotto(Prodotti prodotto) {
+		return magazzinoRepository.findByProdotto(prodotto);
 	}
 	
 	public List<Magazzino> findByPosizione(String posizione){
@@ -38,20 +34,24 @@ public class MagazzinoService {
 		magazzinoRepository.save(mag);
 	}
 	
-	public void updateMagazzino(String codiceProdotto, String nomeProdotto, Integer disponibilita, String posizione, BigDecimal prezzoVendita, BigDecimal prezzoAcquisto) {
-		Magazzino mag = magazzinoRepository.findByCodiceProdotto(codiceProdotto);
-		Posizioni pos = posizioniRepository.findByNomePosizione(posizione);
-		mag.setNomeProdotto(nomeProdotto);
+	public void sottrazioneMagazzino(Prodotti prodotto, Integer quantita) {
+		Magazzino mag = magazzinoRepository.findByProdotto(prodotto);
+		Integer disponibilita = mag.getDisponibilita() - quantita;
 		mag.setDisponibilita(disponibilita);
-		mag.setPosizione(pos);
-		mag.setPrezzoVendita(prezzoVendita);
-		mag.setPrezzoAcquisto(prezzoAcquisto);
-		
+
 		magazzinoRepository.save(mag);
 	}
 	
-	public void deleteMagazzino(String codiceProdotto) {
-		Magazzino mag = magazzinoRepository.findByCodiceProdotto(codiceProdotto);
+	public void aggiuntaMagazzino(Prodotti prodotto, Integer quantita) {
+		Magazzino mag = magazzinoRepository.findByProdotto(prodotto);
+		Integer disponibilita = mag.getDisponibilita() + quantita;
+		mag.setDisponibilita(disponibilita);
+
+		magazzinoRepository.save(mag);
+	}
+	
+	public void deleteMagazzino(Prodotti prodotto) {
+		Magazzino mag = magazzinoRepository.findByProdotto(prodotto);
 		
 		magazzinoRepository.delete(mag);
 	}

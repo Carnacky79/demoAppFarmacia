@@ -12,7 +12,7 @@ import lombok.Data;
 public class Role {
 	
 	@Id
-	private String id;
+	private Integer id;
 	@Indexed(unique = true, direction = IndexDirection.DESCENDING)
 	
 	private String role;

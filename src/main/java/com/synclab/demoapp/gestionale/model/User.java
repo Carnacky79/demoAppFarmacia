@@ -17,7 +17,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 public class User {
 
 	@Id
-	private String id;
+	private Integer id;
 	@Indexed(unique = true, direction = IndexDirection.DESCENDING)
 	
 	private String email;
