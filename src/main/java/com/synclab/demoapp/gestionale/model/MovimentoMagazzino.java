@@ -1,6 +1,5 @@
 package com.synclab.demoapp.gestionale.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
@@ -13,20 +12,18 @@ import lombok.Data;
 
 
 @Data
-@Document(collection = "vendita")
-public class Vendita {
+@Document(collection = "movimento_magazzino")
+public class MovimentoMagazzino {
 	
 	@Id
 	private Integer  id;
 	
 	@Indexed(unique = true, direction = IndexDirection.ASCENDING)
-	private Date dataVendita;
+	private Date dataMovimento;
 	
-	private Integer quantitaVenduta;
+	private String tipoMovimento;
 	
-	private BigDecimal prezzoTotVendita;
-	
-	private BigDecimal prezzoTotAcquisto;
+	private Integer quantitaMovimento;
 	
 	@DBRef
 	private User user;

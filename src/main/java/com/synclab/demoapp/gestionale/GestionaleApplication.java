@@ -22,6 +22,13 @@ public class GestionaleApplication {
 
 	    return args -> {
 
+	    	Role superAdminRole = roleRepository.findByRole("SUPERADMIN");
+	        if (superAdminRole == null) {
+	            Role newSuperAdminRole = new Role();
+	            newSuperAdminRole.setRole("SUPERADMIN");
+	            roleRepository.save(newSuperAdminRole);
+	        }
+	    	
 	        Role adminRole = roleRepository.findByRole("ADMIN");
 	        if (adminRole == null) {
 	            Role newAdminRole = new Role();
