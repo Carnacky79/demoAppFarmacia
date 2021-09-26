@@ -21,14 +21,6 @@ public class MovimentoMagazzinoService {
 		return movimentoMagazzinoRepository.findByDataVendita(dataMovimento);
 	}
 	
-	public List<MovimentoMagazzino> findByUser(User user) {
-		return movimentoMagazzinoRepository.findByUser(user);
-	}
-	
-	public List<MovimentoMagazzino> findByProdotto(Magazzino prodotto) {
-		return movimentoMagazzinoRepository.findByProdotto(prodotto);
-	}
-	
 	public void saveMovimento(MovimentoMagazzino movimento) {
 		movimentoMagazzinoRepository.save(movimento);
 	}

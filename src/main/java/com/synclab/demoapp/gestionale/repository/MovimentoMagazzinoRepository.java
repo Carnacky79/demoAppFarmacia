@@ -16,8 +16,4 @@ public interface MovimentoMagazzinoRepository extends MongoRepository<MovimentoM
 	
 	List<MovimentoMagazzino> findByTipoMovimento(String tipoMovimento);
 	
-	List<MovimentoMagazzino> findByUser(User user);
-	
-	List<MovimentoMagazzino> findByProdotto(Magazzino prodotto);	
-	
 }
