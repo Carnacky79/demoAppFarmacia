@@ -24,7 +24,7 @@ public class User {
 	private String email;
 	private String password;
 	private String nome;
-	private boolean enabled;
+	private Boolean enabled;
 	
 	@ManyToOne(mappedBy="users")
 	private Role role;
