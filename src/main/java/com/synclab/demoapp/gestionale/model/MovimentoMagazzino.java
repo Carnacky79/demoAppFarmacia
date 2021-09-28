@@ -1,17 +1,13 @@
 package com.synclab.demoapp.gestionale.model;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import io.github.kaiso.relmongo.annotation.FetchType;
-import io.github.kaiso.relmongo.annotation.JoinProperty;
-import io.github.kaiso.relmongo.annotation.ManyToOne;
-import io.github.kaiso.relmongo.annotation.OneToMany;
 import lombok.Data;
 
 
@@ -29,11 +25,9 @@ public class MovimentoMagazzino {
 	
 	private Integer quantitaMovimento;
 	
-	@ManyToOne(mappedBy = "movimenti")
+	@DBRef
 	private User user;
 	
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinProperty(name = "magazzinoProdottiQuantitaPrezzo")
-	private List<ProdottiQuantitaPrezzo> movimentoProdotti;
+	
 	
 }

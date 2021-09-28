@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import io.github.kaiso.relmongo.annotation.ManyToOne;
 import lombok.Data;
 
 @Data
@@ -19,10 +18,6 @@ public class ProdottiQuantitaPrezzo {
 	
 	private BigDecimal prezzoTotale;
 		
-	@ManyToOne(mappedBy = "magazzinoProdottiQuantitaPrezzo")
-	private MovimentoMagazzino movimento;
-	
-	@ManyToOne(mappedBy = "prodottoQuantitaPrezzo")
 	private Prodotti prodotto;
 
 }

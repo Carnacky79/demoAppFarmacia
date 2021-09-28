@@ -8,9 +8,4 @@ import com.synclab.demoapp.gestionale.repository.MagazzinoRepository;
 @Service
 public class MagazzinoService {
 	
-	@Autowired
-	private MagazzinoRepository magazzinoRepository;
-
-
-
 }

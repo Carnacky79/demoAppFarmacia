@@ -5,11 +5,9 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import io.github.kaiso.relmongo.annotation.FetchType;
-import io.github.kaiso.relmongo.annotation.JoinProperty;
-import io.github.kaiso.relmongo.annotation.OneToMany;
 import lombok.Data;
 
 @Data
@@ -22,8 +20,7 @@ public class Role {
 	
 	private String role;
 	
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinProperty(name = "users")
+	@DBRef
 	private List<User> user;
 	
 }

@@ -6,9 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.synclab.demoapp.gestionale.model.Magazzino;
 import com.synclab.demoapp.gestionale.model.MovimentoMagazzino;
-import com.synclab.demoapp.gestionale.model.User;
 import com.synclab.demoapp.gestionale.repository.MovimentoMagazzinoRepository;
 
 @Service

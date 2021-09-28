@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.synclab.demoapp.gestionale.model.Magazzino;
-import com.synclab.demoapp.gestionale.model.User;
 import com.synclab.demoapp.gestionale.model.MovimentoMagazzino;
 
 

@@ -39,7 +39,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	public void saveUser(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		Role userRole = roleRepository.findByRole("ADMIN");
-		user.setRole(userRole);
+		user.setRoles(new HashSet<>(Arrays.asList(userRole)));
 		userRepository.save(user);
 	}
 	
@@ -49,16 +49,18 @@ public class CustomUserDetailsService implements UserDetailsService{
 		User user = userRepository.findByEmail(email);
 		
 		if(user != null) {
-			List<GrantedAuthority> authorities = getUserAuthority(user.getRole());
+			List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
 			return buildUserForAuthentication(user, authorities);
 		} else {
 			throw new UsernameNotFoundException("username not found");
 		}
 	}
 	
-	private List<GrantedAuthority> getUserAuthority(Role role){
+	private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles){
 		Set<GrantedAuthority> roles = new HashSet<>();
-		roles.add(new SimpleGrantedAuthority(role.getRole()));
+		userRoles.forEach((role)->{
+			roles.add(new SimpleGrantedAuthority(role.getRole()));
+		});
 		
 		List<GrantedAuthority> grantedAuthorities = new ArrayList<>(roles);
 		

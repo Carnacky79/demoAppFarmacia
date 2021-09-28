@@ -1,13 +1,11 @@
 package com.synclab.demoapp.gestionale.model;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import io.github.kaiso.relmongo.annotation.FetchType;
-import io.github.kaiso.relmongo.annotation.JoinProperty;
-import io.github.kaiso.relmongo.annotation.OneToMany;
 import lombok.Data;
 
 @Data
@@ -19,7 +17,6 @@ public class Magazzino {
 	
 	private String nomeMagazzino;
 
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinProperty(name = "magazzinoProdotti")
-	private List<ProdottiMagazzino> magazzinoProdotti;
+	@DBRef
+	private Set<Prodotti>prodotti;
 }
