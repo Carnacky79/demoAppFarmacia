@@ -1,19 +1,14 @@
 package com.synclab.demoapp.gestionale;
 
-import com.synclab.demoapp.gestionale.model.Role;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.synclab.demoapp.gestionale.model.Role;
 import com.synclab.demoapp.gestionale.repository.RoleRepository;
 
-import io.github.kaiso.relmongo.config.EnableRelMongo;
-
 @SpringBootApplication
-@EnableRelMongo
 public class GestionaleApplication {
 
 	public static void main(String[] args) {

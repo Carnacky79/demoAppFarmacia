@@ -19,5 +19,9 @@ public class ProdottiQuantitaPrezzo {
 	private BigDecimal prezzoTotale;
 		
 	private Prodotti prodotto;
+	
+	private Magazzino magazzino;
+	
+	private Integer id_movimento;
 
 }

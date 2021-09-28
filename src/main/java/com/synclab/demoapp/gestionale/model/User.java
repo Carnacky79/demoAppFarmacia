@@ -1,5 +1,6 @@
 package com.synclab.demoapp.gestionale.model;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
@@ -26,5 +27,6 @@ public class User {
 	@DBRef
 	private Set<Role> roles;
 
-	
+	@DBRef
+	private List<MovimentoMagazzino> movimentiMagazzino;
 }

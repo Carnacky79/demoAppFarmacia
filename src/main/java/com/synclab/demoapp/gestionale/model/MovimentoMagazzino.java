@@ -1,6 +1,8 @@
 package com.synclab.demoapp.gestionale.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
@@ -23,11 +25,13 @@ public class MovimentoMagazzino {
 	
 	private String tipoMovimento;
 	
-	private Integer quantitaMovimento;
+	private Integer quantitaTotale;
+	
+	private BigDecimal prezzoTotale;
 	
 	@DBRef
 	private User user;
 	
-	
+	private List<ProdottiQuantitaPrezzo> prodottiQuantitaPrezzi;
 	
 }
