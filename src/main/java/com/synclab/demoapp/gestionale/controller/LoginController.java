@@ -1,8 +1,7 @@
 package com.synclab.demoapp.gestionale.controller;
 
 
-import com.synclab.demoapp.gestionale.model.User;
-import com.synclab.demoapp.gestionale.service.CustomUserDetailsService;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -15,6 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.synclab.demoapp.gestionale.model.Role;
+import com.synclab.demoapp.gestionale.model.User;
+import com.synclab.demoapp.gestionale.repository.RoleRepository;
+import com.synclab.demoapp.gestionale.service.CustomUserDetailsService;
+
 
 
 @Controller
@@ -22,10 +26,15 @@ public class LoginController {
 	@Autowired
 	private CustomUserDetailsService userService;
 	
+	@Autowired
+	private RoleRepository roleRepo;
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login() {
 	    ModelAndView modelAndView = new ModelAndView();
 	    modelAndView.setViewName("login");
+
+	    
 	    return modelAndView;
 	}
 	
@@ -33,7 +42,9 @@ public class LoginController {
 	public ModelAndView signup() {
 	    ModelAndView modelAndView = new ModelAndView();
 	    User user = new User();
+	    List<Role> roles =  roleRepo.findAll();
 	    modelAndView.addObject("user", user);
+	    modelAndView.addObject("roles", roles);
 	    modelAndView.setViewName("signup");
 	    return modelAndView;
 	}
@@ -65,7 +76,7 @@ public class LoginController {
 	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    User user = userService.findUserByEmail(auth.getName());
 	    modelAndView.addObject("currentUser", user);
-	    modelAndView.addObject("Nome", "Welcome " + user.getNome());
+	    modelAndView.addObject("nome", "Welcome " + user.getNome());
 	    modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
 	    modelAndView.setViewName("dashboard");
 	    return modelAndView;

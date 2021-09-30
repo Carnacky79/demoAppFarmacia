@@ -1,7 +1,6 @@
 package com.synclab.demoapp.gestionale.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,8 +37,8 @@ public class CustomUserDetailsService implements UserDetailsService{
 	
 	public void saveUser(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		Role userRole = roleRepository.findByRole("ADMIN");
-		user.setRoles(new HashSet<>(Arrays.asList(userRole)));
+		Role userRole = roleRepository.findByRole(user.getRole().getRole());
+		user.setRole(userRole);
 		userRepository.save(user);
 	}
 	
@@ -49,18 +48,16 @@ public class CustomUserDetailsService implements UserDetailsService{
 		User user = userRepository.findByEmail(email);
 		
 		if(user != null) {
-			List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
+			List<GrantedAuthority> authorities = getUserAuthority(user.getRole());
 			return buildUserForAuthentication(user, authorities);
 		} else {
 			throw new UsernameNotFoundException("username not found");
 		}
 	}
 	
-	private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles){
+	private List<GrantedAuthority> getUserAuthority(Role userRole){
 		Set<GrantedAuthority> roles = new HashSet<>();
-		userRoles.forEach((role)->{
-			roles.add(new SimpleGrantedAuthority(role.getRole()));
-		});
+		roles.add(new SimpleGrantedAuthority(userRole.getRole()));
 		
 		List<GrantedAuthority> grantedAuthorities = new ArrayList<>(roles);
 		

@@ -12,7 +12,7 @@ import lombok.Data;
 public class ProdottiQuantitaPrezzo {
 	
 	@Id
-	private Integer  id;
+	private String  id;
 	
 	private Integer quantita;
 	

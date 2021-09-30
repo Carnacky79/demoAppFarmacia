@@ -16,7 +16,7 @@ public class MovimentoMagazzinoService {
 	MovimentoMagazzinoRepository movimentoMagazzinoRepository;
 	
 	public List<MovimentoMagazzino> findByDataVendita(Date dataMovimento) {
-		return movimentoMagazzinoRepository.findByDataVendita(dataMovimento);
+		return movimentoMagazzinoRepository.findByDataMovimento(dataMovimento);
 	}
 	
 	public void saveMovimento(MovimentoMagazzino movimento) {

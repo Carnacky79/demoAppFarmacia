@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
@@ -18,7 +17,7 @@ import lombok.Data;
 public class MovimentoMagazzino {
 	
 	@Id
-	private Integer  id;
+	private String  id;
 	
 	@Indexed(unique = true, direction = IndexDirection.ASCENDING)
 	private Date dataMovimento;
@@ -29,9 +28,8 @@ public class MovimentoMagazzino {
 	
 	private BigDecimal prezzoTotale;
 	
-	@DBRef
 	private User user;
 	
-	private List<ProdottiQuantitaPrezzo> prodottiQuantitaPrezzi;
+	private List<ProdottiQuantitaPrezzo> prodottiQuantitaPrezzo;
 	
 }

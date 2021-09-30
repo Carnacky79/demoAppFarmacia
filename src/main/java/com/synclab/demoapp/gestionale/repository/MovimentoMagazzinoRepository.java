@@ -13,7 +13,7 @@ import com.synclab.demoapp.gestionale.model.User;
 
 public interface MovimentoMagazzinoRepository extends MongoRepository<MovimentoMagazzino, String>{
 	
-	List<MovimentoMagazzino> findByDataVendita(Date dataVendita);
+	List<MovimentoMagazzino> findByDataMovimento(Date dataMovimento);
 	
 	List<MovimentoMagazzino> findByTipoMovimento(String tipoMovimento);
 	

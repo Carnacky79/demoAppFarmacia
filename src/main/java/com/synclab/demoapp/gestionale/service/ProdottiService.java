@@ -36,7 +36,7 @@ public class ProdottiService {
 		return prodottiRepository.findByMagazzini(magazzini);
 	}
 	
-	public Integer insertProdotto(Prodotti prodotto) {
+	public String insertProdotto(Prodotti prodotto) {
 		Prodotti prod = prodottiRepository.save(prodotto);
 		
 		return prod.getId();
